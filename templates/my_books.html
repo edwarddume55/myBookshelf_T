@@ -9,8 +9,11 @@
 </head>
 <body>
 <h1>My Bookshelf</h1>
+{% for message in messages %}
+	<p>{{ message }}</p>
+{% endfor %}
 <ul>
-    {% for book in books %}
+    {% for book in book %}
         <li>
         <h2>{{ book.title }}</h2>
             <h2>{{ book.author }}</h2>
@@ -21,6 +24,7 @@
 
 
             <img src="{{ book.book.url }}" alt="{{ book.title }}"><br>
+        <a href="{% url 'delete_book' book.id %}">Delete</a>
         </li>
     {% endfor %}
 </ul>

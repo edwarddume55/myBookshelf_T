@@ -22,10 +22,10 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.book_upload, name='add_book'),
-    path('book/add',views.my_books, name='my_books'),
+    path('', views.add_book, name='add_book'),
+    path('my_books', views.my_books, name='my_books'),
+    path('book/delete/<int:id>', views.delete_book, name='delete_book'),
 ]
 
-
 if settings.DEBUG:
-    urlpatterns +=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
