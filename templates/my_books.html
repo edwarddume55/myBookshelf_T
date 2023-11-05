@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Books</title>
+</head>
+<body>
+<h1>My Bookshelf</h1>
+<ul>
+    {% for book in books %}
+        <li>
+        <h2>{{ book.title }}</h2>
+            <h2>{{ book.author }}</h2>
+            <h2>{{ book.isbn }}</h2>
+            <p>{{ book.summary }}</p>
+            <h2>{{ book.genre }}</h2>
+            <h3>{{ book.publish_date }}</h3>
+
+
+            <img src="{{ book.book.url }}" alt="{{ book.title }}"><br>
+        </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'add_book' %}">Upload Book</a>
+</body>
+</html>
