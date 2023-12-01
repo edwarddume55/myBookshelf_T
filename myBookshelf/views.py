@@ -102,7 +102,7 @@ def registerPage(request):
             user.username = user.username.lower()
             user.save()
             login(request, user)
-            return redirect('my_books')
+            return redirect('login')
         else:
             messages.error(request, 'An error occurred during registration')
 

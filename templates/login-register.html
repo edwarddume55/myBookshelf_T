@@ -16,12 +16,12 @@
                 {% csrf_token %}
                 <div class="mb-3">
                     <label for="username" class="form-label">Username:</label>
-                    <input id="username" name="username" type="text" class="form-control" placeholder="e.g. John" />
+                    <input id="username" name="username" type="text" class="form-control" placeholder="e.g. John" required />
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password:</label>
                     <input id="password" name="password" type="password" class="form-control"
-                        placeholder="••••••••" />
+                        placeholder="••••••••" required/>
                 </div>
 
                 <button class="btn btn-dark text-center" type="submit">Login</button>
@@ -51,16 +51,29 @@
                       <hr
 
                         <form class="form" action="" method="post">
-                            {% csrf_token %}
-                            {% for field in form %}
-                            <div class="form-group mb-3">
-                                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                                {{ field }}
-                            </div>
-                            {% endfor %}
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="form-group mb-3">
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+        </div>
+    {% endfor %}
 
-                            <button class="btn btn-dark btn-block mt-3" type="submit">Register</button>
-                        </form>
+    <button class="btn btn-dark btn-block mt-3" type="submit" id="submitBtn">Register</button>
+</form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.querySelector('.form');
+        const submitButton = document.getElementById('submitBtn');
+
+        form.addEventListener('input', function () {
+            // Enable the submit button if the form is valid
+            submitButton.disabled = !form.checkValidity();
+        });
+    });
+</script>
+
 
                         <div class="auth__action text-center mt-3">
                             <p>Already signed up?</p>
