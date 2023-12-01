@@ -10,3 +10,4 @@ class Book(models.Model):
     genre = models.CharField(max_length=10)
     publish_date = models.DateTimeField()
     book = models.ImageField(upload_to='books/')
+

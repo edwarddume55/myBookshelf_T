@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if page == 'login'%}
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-body">
+                <h2 class="mt-5 mb-4 text-center">Login</h2>
+           <div class="layout__body">
+            <h4 class="auth__tagline text-center">Login To Your Book Store</h4>
+
+            <form class="form" action="" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username:</label>
+                    <input id="username" name="username" type="text" class="form-control" placeholder="e.g. John" />
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password:</label>
+                    <input id="password" name="password" type="password" class="form-control"
+                        placeholder="••••••••" />
+                </div>
+
+                <button class="btn btn-dark text-center" type="submit">Login</button>
+            </form>
+
+            <div class="auth__action text-center">
+                <p>Haven't signed up yet?</p>
+                <a href="{% url 'register' %}" class="btn btn--link">Sign Up</a>
+            </div>
+        </div>
+    </div>
+</div>
+  </div>
+
+
+{% else %}
+
+   <body>
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="text-center">Register</h3>
+                    </div>
+                    <div class="card-body">
+                      <hr
+
+                        <form class="form" action="" method="post">
+                            {% csrf_token %}
+                            {% for field in form %}
+                            <div class="form-group mb-3">
+                                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                {{ field }}
+                            </div>
+                            {% endfor %}
+
+                            <button class="btn btn-dark btn-block mt-3" type="submit">Register</button>
+                        </form>
+
+                        <div class="auth__action text-center mt-3">
+                            <p>Already signed up?</p>
+                            <a href="{% url 'login' %}" class="btn btn-link">Login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+{% endblock content %}

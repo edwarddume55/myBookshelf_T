@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+   <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-body">
+    <h2 class="mt-5 mb-4">Update Book</h2>
+    <form method="post" enctype="multipart/form-data" class="mb-5">
+      {% csrf_token %}
+
+      {{ form.title }}
+      {{ form.author }}
+      {{ form.isbn }}
+      {{ form.summary }}
+      {{ form.genre }}
+      {{ form.publish_date }}
+      {{ form.book }}
+
+      <button type="submit" class="btn btn-dark">Update Book</button>
+    </form>
+  </div>
+    </div>
+      </div>
+    </div>
+   </div>
+{% endblock %}

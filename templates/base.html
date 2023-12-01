@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+     {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Books</title>
+      <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <style>
+        /* Custom CSS to ensure cards have the same height */
+        .card {
+            object-fit: cover;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+ {% include 'nav_bar.html' %}
+
+{% for message in messages %}
+     <div class="alert alert-warning alert-dismissible fade show" role="alert">
+	<p>{{ message }}</p>
+     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+
+{% block content %}
+
+{% endblock content %}
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

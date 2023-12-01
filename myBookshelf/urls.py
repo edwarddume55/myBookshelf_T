@@ -22,9 +22,14 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.add_book, name='add_book'),
-    path('my_books', views.my_books, name='my_books'),
-    path('book/delete/<int:id>', views.delete_book, name='delete_book'),
+    path('add_book', views.add_book, name='add_book'),
+    path('', views.my_books, name='my_books'),
+    path('book/delete/<int:pk>', views.delete_book, name='delete_book'),
+    path('book/update/<int:pk>', views.update_book, name='update_book'),
+
+    path('login/', views.loginPage, name='login'),
+    path('logout/', views.logoutUser, name='logout'),
+    path('register/', views.registerPage, name='register'),
 ]
 
 if settings.DEBUG:
